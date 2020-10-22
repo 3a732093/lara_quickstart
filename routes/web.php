@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Task;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+
+Route::group(['middleware' => 'web'], function () {
+
+
+    Route::get('/', function () {
+
+    });
+
+
+    Route::post('/task', function (Request $request) {
+
+    });
+
+
+    Route::delete('/task/{task}', function (Task $task) {
+
+    });
 });
