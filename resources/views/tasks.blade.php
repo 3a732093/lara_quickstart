@@ -1,18 +1,18 @@
 @extends('layouts.app')
-/*代表tasks視圖將使用
-layouts\app.blade.php的佈局*/
+<!--代表tasks視圖將使用
+layouts\app.blade.php的佈局-->
 
 @section('content')
-    /*代表tasks視圖本身的一個段落
-    (section)，並且命名為content*/
+   <!-- /*代表tasks視圖本身的一個段落
+    (section)，並且命名為content*/-->
 
 
 
     <div class="panel-body">
         <!-- 顯示驗證錯誤 -->
-    @include('common.errors')/*代表在此將引入
+    @include('commonn.errors')<!--/*代表在此將引入
         common\errors.blade.php視圖的
-        內容，用以顯示錯誤訊息*/
+        內容，用以顯示錯誤訊息*/-->
 
     <!-- 新任務的表單 -->
         <form action="/task" method="POST" class="form-horizontal">
@@ -64,6 +64,12 @@ layouts\app.blade.php的佈局*/
 
                             <td>
                                 <!-- 代辦：刪除按鈕 -->
+                                <form action="/task/{{ $task->id }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <button>刪除任務</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

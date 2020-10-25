@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Task;
+use App\Models\Task;
+use Illuminate\Http\Request;
 
 
 /*Route::get('/', function () {
@@ -13,7 +14,7 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::get('/', function () {
-        $tasks = Task::orderBy('created_at', 'asc')->get();
+        $tasks =\App\Models\ Task::orderBy('created_at', 'asc')->get();
 
 
           return view('tasks',[
@@ -24,7 +25,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('/task', function (Request $request) {
 
-        $validator = Validator::make($request->all() , [
+        $validator = Validator::make($request -> all() , [
             'name' => 'required|max:255',
         ]);
         if ($validator->fails()) {
@@ -41,6 +42,9 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::delete('/task/{task}', function (Task $task) {
+
+        $task->delete();
+        return redirect('/');
 
     });
 });
